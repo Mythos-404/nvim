@@ -11,6 +11,7 @@ local function inspect(t)
 		local q = type(v) == "string" and [["]] or ""
 		table.insert(list, fmt([[%s = %s%s%s]], k, q, tostring(v), q))
 	end
+	table.sort(list)
 	return fmt([[{ %s }]], table.concat(list, ", "))
 end
 
@@ -21,7 +22,8 @@ function M.compile(flavour)
 require("catppuccin").compiled = string.dump(function()
 if vim.g.colors_name then vim.cmd("hi clear") end
 vim.o.termguicolors = true
-vim.g.colors_name = "catppuccin"]],
+vim.g.colors_name = "catppuccin"
+local h = vim.api.nvim_set_hl]],
 	}
 	table.insert(lines, "vim.o.background = " .. (flavour == "latte" and [["light"]] or [["dark"]]))
 	if path_sep == "\\" then O.compile_path = O.compile_path:gsub("/", "\\") end
@@ -34,6 +36,7 @@ vim.g.colors_name = "catppuccin"]],
 		end
 	end
 
+	local groups = {}
 	for group, color in pairs(tbl) do
 		if color.style then
 			for _, style in pairs(color.style) do
@@ -46,11 +49,27 @@ vim.g.colors_name = "catppuccin"]],
 		if color.link and (theme.custom_highlights[group] and not theme.custom_highlights[group].link) then
 			color.link = nil
 		end
-		table.insert(lines, fmt([[vim.api.nvim_set_hl(0, "%s", %s)]], group, inspect(color)))
+		local opts = inspect(color)
+		groups[opts] = groups[opts] or {}
+		table.insert(groups[opts], group)
+	end
+	for opts, group in pairs(groups) do
+		table.sort(group, function(a, b) return #a < #b end)
+		for i, v in ipairs(group) do
+			if i == 1 then
+				table.insert(lines, fmt([[h(0, "%s", %s)]], v, opts))
+			else
+				table.insert(lines, fmt([[h(0, "%s", { link = "%s" })]], v, group[1]))
+			end
+		end
 	end
 	table.insert(lines, "end)")
 	if vim.fn.isdirectory(O.compile_path) == 0 then vim.fn.mkdir(O.compile_path, "p") end
 	local file = io.open(O.compile_path .. path_sep .. flavour .. "_compiled.lua", "wb")
+	local err_path = (path_sep == "/" and "/tmp" or os.getenv "TMP") .. "/catppuccin_error.lua"
+	local err = io.open(err_path, "wb")
+	err:write(table.concat(lines, "\n"))
+	err:close()
 
 	local f = loadstring(table.concat(lines, "\n"), "=")
 	if not f then
