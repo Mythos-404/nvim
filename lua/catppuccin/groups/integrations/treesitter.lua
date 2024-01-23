@@ -14,16 +14,16 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 
 	local colors = { -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
 		-- Identifiers
-		["@variable"] = { fg = C.text, style = O.styles.variables or {} }, -- Any variable name that does not have another highlight.
+		["@variable"] = { link = "Identifier" }, -- Any variable name that does not have another highlight.
 		["@variable.builtin"] = { fg = C.red, style = O.styles.properties or {} }, -- Variable names that are defined by the languages, like this or self.
-		["@variable.parameter"] = { fg = C.maroon, style = O.styles.variables or {} }, -- For parameters of a function.
-		["@variable.member"] = { fg = C.lavender }, -- For fields.
+		["@variable.parameter"] = { fg = C.rosewater, style = O.styles.variables or {} }, -- For parameters of a function.
+		["@variable.member"] = { fg = C.rosewater }, -- For fields.
 
 		["@constant"] = { link = "Constant" }, -- For constants
-		["@constant.builtin"] = { fg = C.peach, style = O.styles.keywords or {} }, -- For constant that are built in the language: nil in Lua.
+		["@constant.builtin"] = { fg = C.lavender, style = O.styles.properties or {} }, -- For constant that are built in the language: nil in Lua.
 		["@constant.macro"] = { link = "Macro" }, -- For constants that are defined by macros: NULL in C.
 
-		["@module"] = { fg = C.lavender, style = { "italic" } }, -- For identifiers referring to modules and namespaces.
+		["@module"] = { fg = C.rosewater }, -- For identifiers referring to modules and namespaces.
 		["@label"] = { link = "Label" }, -- For labels: label: in C and :label: in Lua.
 
 		-- Literals
@@ -48,13 +48,13 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 		["@type.qualifier"] = { link = "Keyword" }, -- type qualifiers (e.g. `const`)
 
 		["@attribute"] = { link = "Constant" }, -- attribute annotations (e.g. Python decorators)
-		["@property"] = { fg = C.lavender, style = O.styles.properties or {} }, -- Same as TSField.
+		["@property"] = { fg = C.rosewater, style = O.styles.properties or {} }, -- Same as TSField.
 
 		-- Functions
 		["@function"] = { link = "Function" }, -- For function (calls and definitions).
 		["@function.builtin"] = { fg = C.peach, style = O.styles.functions or {} }, -- For builtin functions: table.insert in Lua.
 		["@function.call"] = { link = "Function" }, -- function calls
-		["@function.macro"] = { fg = C.teal, style = O.styles.functions or {} }, -- For macro defined functions (calls and definitions): each macro_rules in Rust.
+		["@function.macro"] = { link = "Constant" }, -- For macro defined functions (calls and definitions): each macro_rules in RusC.
 
 		["@function.method"] = { link = "Function" }, -- For method definitions.
 		["@function.method.call"] = { link = "Function" }, -- For method calls.
@@ -64,12 +64,12 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 
 		-- Keywords
 		["@keyword"] = { link = "Keyword" }, -- For keywords that don't fall in previous categories.
-		["@keyword.function"] = { fg = C.mauve, style = O.styles.keywords or {} }, -- For keywords used to define a function.
-		["@keyword.operator"] = { fg = C.mauve, style = O.styles.operators or {} }, -- For new keyword operator
+		["@keyword.function"] = { fg = C.maroon, style = O.styles.keywords or {} }, -- For keywords used to define a function.
+		["@keyword.operator"] = { link = "Operator" }, -- For new keyword operator
 		["@keyword.import"] = { link = "Include" }, -- For includes: #include in C, use or extern crate in Rust, or require in Lua.
 		["@keyword.storage"] = { link = "StorageClass" }, -- visibility/life-time/etc. modifiers (e.g. `static`)
 		["@keyword.repeat"] = { link = "Repeat" }, -- For keywords related to loops.
-		["@keyword.return"] = { fg = C.mauve, style = O.styles.keywords or {} },
+		["@keyword.return"] = { fg = C.pink, style = O.styles.keywords or {} },
 		["@keyword.exception"] = { link = "Exception" }, -- For exception related keywords.
 
 		["@keyword.conditional"] = { link = "Conditional" }, -- For keywords related to conditionnals.
@@ -180,8 +180,8 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 
 		-- C/CPP
 		["@type.builtin.c"] = { fg = C.yellow, style = {} },
-		["@property.cpp"] = { fg = C.text },
 		["@type.builtin.cpp"] = { fg = C.yellow, style = {} },
+		["@property.cpp"] = { fg = C.text },
 
 		-- Misc
 		gitcommitSummary = { fg = C.rosewater, style = { "italic" } },
@@ -192,7 +192,7 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 	colors["@parameter"] = colors["@variable.parameter"]
 	colors["@field"] = colors["@variable.member"]
 	colors["@namespace"] = colors["@module"]
-	colors["@float"] = colors["number.float"]
+	colors["@float"] = colors["@number.float"]
 	colors["@symbol"] = colors["@string.special.symbol"]
 	colors["@string.regex"] = colors["@string.regexp"]
 
@@ -222,9 +222,9 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 	colors["@text.danger"] = colors["@comment.error"]
 
 	-- @text.uri is now
-	-- @markup.link.url in markup links
-	-- @string.special.url outside of markup
-	colors["text.uri"] = colors["@markup.link.uri"]
+	-- > @markup.link.url in markup links
+	-- > @string.special.url outside of markup
+	colors["@text.uri"] = colors["@markup.link.uri"]
 
 	colors["@method"] = colors["@function.method"]
 	colors["@method.call"] = colors["@function.method.call"]
@@ -236,7 +236,7 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 	colors["@preproc"] = colors["@keyword.directive"]
 	colors["@storageclass"] = colors["@keyword.storage"]
 	colors["@conditional"] = colors["@keyword.conditional"]
-	colors["exception"] = colors["@keyword.exception"]
+	colors["@exception"] = colors["@keyword.exception"]
 	colors["@include"] = colors["@keyword.import"]
 	colors["@repeat"] = colors["@keyword.repeat"]
 
