@@ -159,6 +159,7 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 
 		-- lua
 		["@constructor.lua"] = { fg = C.flamingo }, -- For constructor calls and definitions: = { } in Lua.
+		["@variable.member.lua"] = { fg = C.lavender },
 
 		-- typescript
 		["@property.typescript"] = { fg = C.lavender, style = O.styles.properties or {} },
@@ -242,7 +243,8 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 
 	colors["@symbol.ruby"] = colors["@string.special.symbol.ruby"]
 
-	colors["@variable.member.yaml"] = colors["@field.yaml"]
+	colors["@field.yaml"] = colors["@variable.member.yaml"]
+	colors["@field.lua"] = colors["@variable.member.lua"]
 
 	colors["@text.title.1.markdown"] = colors["@markup.heading.1.markdown"]
 	colors["@text.title.2.markdown"] = colors["@markup.heading.2.markdown"]
