@@ -21,6 +21,7 @@ If you want to stay on nvim 0.7, disable the integration.
 		["@lsp.type.formatSpecifier"] = { link = "@markup.link.label" },
 		["@lsp.type.interface"] = { link = "@type" },
 		["@lsp.type.keyword"] = { link = "@keyword" },
+		["@lsp.type.modifier"] = { link = "@keyword" },
 		["@lsp.type.namespace"] = { link = "@module" },
 		["@lsp.type.number"] = { link = "@number" },
 		["@lsp.type.operator"] = { link = "@operator" },

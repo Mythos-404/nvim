@@ -23,7 +23,7 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 		["@constant.builtin"] = { fg = C.lavender, style = O.styles.properties or {} }, -- For constant that are built in the language: nil in Lua.
 		["@constant.macro"] = { link = "Macro" }, -- For constants that are defined by macros: NULL in C.
 
-		["@module"] = { fg = C.lavender, style = O.styles.miscs or { "italic" } }, -- For identifiers referring to modules and namespaces.
+		["@module"] = { fg = C.rosewater, style = O.styles.miscs or {} }, -- For identifiers referring to modules and namespaces.
 		["@label"] = { link = "Label" }, -- For labels: label: in C and :label: in Lua.
 
 		-- Literals
