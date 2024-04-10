@@ -90,6 +90,7 @@ There is no need to call `setup` if you don't want to change the default options
 ```lua
 require("catppuccin").setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha
+    -- flavour = "auto" -- will respect terminal's background
     background = { -- :h background
         light = "latte",
         dark = "mocha",
@@ -118,9 +119,11 @@ require("catppuccin").setup({
         properties = {},
         types = {},
         operators = {},
+        -- miscs = {}, -- Uncomment to turn off hard-coded styles
     },
     color_overrides = {},
     custom_highlights = {},
+    default_integrations = true,
     integrations = {
         cmp = true,
         gitsigns = true,
@@ -248,6 +251,14 @@ require("catppuccin").setup({
             indentscope_color = "",
         },
     }
+})
+```
+
+Some integrations are enabled by default, you can control this behaviour with `default_integrations` option.
+
+```lua
+require("catppuccin").setup({
+    default_integrations = false,
 })
 ```
 
@@ -561,6 +572,14 @@ ctp_feline.setup({
         ["rm"] = { "MORE", clrs.teal },
         ["r?"] = { "CONFIRM", clrs.mauve },
         ["!"] = { "SHELL", clrs.green },
+    },
+    view = {
+        lsp = {
+            progress = true, -- if true the status bar will display an lsp progress indicator
+            name = false, -- if true the status bar will display the lsp servers name, otherwise it will display the text "Lsp"
+            exclude_lsp_names = {}, -- lsp server names that should not be displayed when name is set to true
+            separator = "|", -- the separator used when there are multiple lsp servers
+        },
     }
 })
 ```
@@ -1089,7 +1108,7 @@ nvimtree = true
 <td>
 
 ```lua
-treesitter_context = false
+treesitter_context = true
 ```
 
 </td>
@@ -1218,6 +1237,32 @@ rainbow_delimiters = true
 </td>
 </tr>
 <!-- rainbow-delimiters.nvim -->
+
+<!-- reactive.nvim -->
+</tr>
+<tr>
+<td> <a href="https://github.com/rasulomaroff/reactive.nvim">reactive.nvim</a> </td>
+<td>
+
+<details> <summary>Special</summary>
+
+There're 2 available presets (`cursor` and `cursorline`) for every flavour.
+
+Here is how you can use them.
+
+```lua
+require('reactive').setup {
+  load = { 'catppuccin-mocha-cursor', 'catppuccin-mocha-cursorline' }
+}
+```
+
+To use another flavour just replace `mocha` with the one you want to use.
+
+</details>
+
+</td>
+</tr>
+<!-- reactive.nvim -->
 
 <!-- symbols-outline.nvim -->
 </tr>

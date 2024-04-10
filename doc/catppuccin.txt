@@ -71,6 +71,7 @@ options and settings.
 >lua
     require("catppuccin").setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
+        -- flavour = "auto" -- will respect terminal's background
         background = { -- :h background
             light = "latte",
             dark = "mocha",
@@ -99,9 +100,11 @@ options and settings.
             properties = {},
             types = {},
             operators = {},
+            -- miscs = {}, -- Uncomment to turn off hard-coded styles
         },
         color_overrides = {},
         custom_highlights = {},
+        default_integrations = true,
         integrations = {
             cmp = true,
             gitsigns = true,
@@ -241,6 +244,15 @@ example:
                 indentscope_color = "",
             },
         }
+    })
+<
+
+Some integrations are enabled by default, you can control this behaviour with
+`default_integrations` option.
+
+>lua
+    require("catppuccin").setup({
+        default_integrations = false,
     })
 <
 
@@ -453,6 +465,14 @@ Here are the defaults:
             ["rm"] = { "MORE", clrs.teal },
             ["r?"] = { "CONFIRM", clrs.mauve },
             ["!"] = { "SHELL", clrs.green },
+        },
+        view = {
+            lsp = {
+                progress = true, -- if true the status bar will display an lsp progress indicator
+                name = false, -- if true the status bar will display the lsp servers name, otherwise it will display the text "Lsp"
+                exclude_lsp_names = {}, -- lsp server names that should not be displayed when name is set to true
+                separator = "|", -- the separator used when there are multiple lsp servers
+            },
         }
     })
 <
@@ -691,7 +711,7 @@ nvim-tree.lua>lua
 <
 
 nvim-treesitter-context>lua
-    treesitter_context = false
+    treesitter_context = true
 <
 
 nvim-treesitter>lua
@@ -729,6 +749,20 @@ pounce.nvim>lua
 rainbow-delimiters.nvim>lua
     rainbow_delimiters = true
 <
+
+reactive.nvimSpecial ~
+
+There’re 2 available presets (`cursor` and `cursorline`) for every flavour.
+
+Here is how you can use them.
+
+>lua
+    require('reactive').setup {
+      load = { 'catppuccin-mocha-cursor', 'catppuccin-mocha-cursorline' }
+    }
+<
+
+To use another flavour just replace `mocha` with the one you want to use.
 
 symbols-outline.nvim
   [!NOTE] This plugin has been archived by the author, consider using

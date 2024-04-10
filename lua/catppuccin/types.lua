@@ -2,7 +2,7 @@
 ---@field options CatppuccinOptions
 ---@field setup fun(opts: CatppuccinOptions?)
 
----@alias CtpFlavor "mocha" | "macchiato" | "frappe" | "latte"
+---@alias CtpFlavor "mocha" | "macchiato" | "frappe" | "latte" | "auto"
 ---@alias CtpColor "rosewater" | "flamingo" | "pink" | "mauve" | "red" | "maroon" | "peach" | "yellow" | "green" | "teal" | "sky" | "sapphire" | "blue" | "lavender" | "text" | "subtext1" | "subtext0" | "overlay2" | "overlay1" | "overlay0" | "surface2" | "surface1" | "surface0" | "base" | "mantle" | "crust"
 ---@class CtpFlavors<T>: {all: T, mocha: T, macchiato: T, frappe: T, latte: T }
 ---@class CtpColors<T>: {rosewater: T, flamingo: T, pink: T, mauve: T, red: T, maroon: T, peach: T, yellow: T, green: T, teal: T, sky: T, sapphire: T, blue: T, lavender: T, text: T, subtext1: T, subtext0: T, overlay2: T, overlay1: T, overlay0: T, surface2: T, surface1: T, surface0: T, base: T, mantle: T, crust: T, none: T }
@@ -31,6 +31,8 @@
 ---@field no_underline boolean?
 -- Handles the style of general hl groups (see `:h highlight-groups`).
 ---@field styles CtpStyles?
+-- Should default integrations be used.
+---@field default_integrations boolean?
 -- Toggle integrations. Integrations allow Catppuccin to set the theme of various plugins.
 ---@field integrations CtpIntegrations?
 -- Catppuccin colors can be overwritten here.
@@ -81,6 +83,8 @@
 ---@field types CtpHighlightArgs[]?
 -- Change the style of operators.
 ---@field operators CtpHighlightArgs[]?
+-- Change the style of miscs.
+---@field miscs CtpHighlightArgs[]?
 
 ---@class CtpNativeLspStyles
 -- Change the style of LSP errors.
@@ -146,7 +150,7 @@
 ---@field harpoon boolean?
 ---@field headlines boolean?
 ---@field hop boolean?
----@field illuminate boolean?
+---@field illuminate CtpIntegrationIlluminate | boolean?
 ---@field indent_blankline CtpIntegrationIndentBlankline | boolean?
 ---@field leap boolean?
 ---@field lightspeed boolean?
@@ -248,6 +252,12 @@
 ---@field enabled boolean?
 -- The style of Telescope
 ---@field style "classic" | "nvchad" | nil
+
+---@class CtpIntegrationIlluminate
+-- Whether to enable the vim-illuminate integration
+---@field enabled boolean?
+-- Whether to standout IlluminatedWordWrite hl group
+---@field lsp boolean?
 
 ---@alias CtpHighlightArgs "bold" | "underline" | "undercurl" | "underdouble" | "underdotted" | "underdashed" | "strikethrough" | "reverse" | "inverse" | "italic" | "standout" | "altfont" | "nocombine" | "NONE"
 ---@alias CtpHighlightOverrideFn fun(colors: CtpColors<string>): { [string]: CtpHighlight}

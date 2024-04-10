@@ -35,6 +35,7 @@ local M = {
 			types = {},
 			operators = {},
 		},
+		default_integrations = true,
 		integrations = {
 			alpha = true,
 			cmp = true,
@@ -45,12 +46,14 @@ local M = {
 			gitsigns = true,
 			markdown = true,
 			neogit = true,
+			neotree = true,
 			nvimtree = true,
 			ufo = true,
 			rainbow_delimiters = true,
 			semantic_tokens = not is_vim,
 			telescope = { enabled = true },
 			treesitter = not is_vim,
+			treesitter_context = true,
 			barbecue = {
 				dim_dirname = true,
 				bold_basename = true,
@@ -135,6 +138,18 @@ end
 local did_setup = false
 
 function M.load(flavour)
+	if M.options.flavour == "auto" then -- set colorscheme based on o:background
+		M.options.flavour = nil -- ensure that this will only run once on startup
+		if not vim.api.nvim_get_option_info2("background", {}).was_set then -- wait for terminal to set o:background
+			vim.api.nvim_create_autocmd("OptionSet", { -- https://github.com/neovim/neovim/pull/26284
+				once = true,
+				nested = true,
+				pattern = "background",
+				callback = function() M.load(flavour) end,
+			})
+			return
+		end
+	end
 	if not did_setup then M.setup() end
 	M.flavour = get_flavour(flavour)
 	local compiled_path = M.options.compile_path .. M.path_sep .. M.flavour
@@ -151,6 +166,9 @@ function M.setup(user_conf)
 	did_setup = true
 	-- Parsing user config
 	user_conf = user_conf or {}
+
+	if user_conf.default_integrations == false then M.default_options.integrations = {} end
+
 	M.options = vim.tbl_deep_extend("keep", user_conf, M.default_options)
 	M.options.highlight_overrides.all = user_conf.custom_highlights or M.options.highlight_overrides.all
 
