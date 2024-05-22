@@ -118,6 +118,7 @@
 ---```
 ---@field barbecue CtpIntegrationBarbecue | boolean?
 ---@field beacon boolean?
+---@field colorful_winsep CtpIntegrationColorfulWinsep | boolean?
 ---@field cmp boolean?
 -- `coc.nvim` links to `native_lsp` highlight groups, so you can use
 -- `native_lsp.virtual_text` and `native_lsp.underlines` to style diagnostics.
@@ -132,6 +133,7 @@
 ---@field dap boolean?
 ---@field dap_ui boolean?
 ---@field dashboard boolean?
+---@field diffview boolean?
 ---@field dropbar CtpIntegrationDropbar | boolean?
 ---@field fern boolean?
 -- Set `notification.window.winblend` to `0` in your `fidget` config:
@@ -209,6 +211,12 @@
 ---@field dim_context boolean?
 -- Whether the directory name should be dimmed.
 ---@field dim_dirname boolean?
+
+---@class CtpIntegrationColorfulWinsep
+-- Whether to enable the colorful-winsep integration.
+---@field enabled boolean
+-- Set to a Catppuccin color name to use for the split separator.
+---@field color CtpColor?
 
 ---@class CtpIntegrationDropbar
 -- Whether to enable the dropbar integration.
