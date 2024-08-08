@@ -149,8 +149,10 @@
 -- ```
 ---@field fidget boolean?
 ---@field flash boolean?
+---@field fzf boolean?
 ---@field gitgutter boolean?
 ---@field gitsigns boolean?
+---@field grug_far boolean?
 ---@field harpoon boolean?
 ---@field headlines boolean?
 ---@field hop boolean?
@@ -158,6 +160,7 @@
 ---@field indent_blankline CtpIntegrationIndentBlankline | boolean?
 ---@field leap boolean?
 ---@field lightspeed boolean?
+---@field lir CtpIntegrationLir | boolean?
 -- For custom Lsp kind icon and colors, adjust your `lspsaga` config:
 --
 -- ```lua
@@ -185,11 +188,13 @@
 ---@field neotree boolean?
 ---@field noice boolean?
 ---@field notify boolean?
+---@field nvim_surround boolean?
 ---@field nvimtree boolean?
 ---@field octo boolean?
 ---@field overseer boolean?
 ---@field pounce boolean?
 ---@field rainbow_delimiters boolean?
+---@field render_markdown boolean?
 ---@field sandwich boolean?
 ---@field semantic_tokens boolean?
 ---@field symbols_outline boolean?
@@ -234,6 +239,12 @@
 -- Enables char highlights per indent level.
 -- Follow the instructions on the plugins GitHub repo to set it up.
 ---@field colored_indent_levels boolean?
+
+---@class CtpIntegrationLir
+-- Whether to enable the integration.
+---@field enabled boolean
+-- Sets lir-git-status.nvim highlight groups
+---@field git_status boolean
 
 ---@class CtpIntegrationMini
 -- Whether to enable the integration.

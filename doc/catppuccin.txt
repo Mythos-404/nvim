@@ -538,8 +538,16 @@ flash.nvim>lua
     flash = true
 <
 
+fzf-lua>lua
+    fzf = true
+<
+
 gitsigns.nvim>lua
     gitsigns = true
+<
+
+grug-far.nvim>lua
+    grug_far = false
 <
 
 harpoon>lua
@@ -581,6 +589,13 @@ lightline.vimSpecial ~
 
 lightspeed.nvim>lua
     lightspeed = false
+<
+
+lir.nvim>lua
+    lir = {
+        enabled = false,
+        git_status = false
+    }
 <
 
 lspsaga.nvim>lua
@@ -724,6 +739,10 @@ nvim-semantic-tokens>lua
     semantic_tokens = true
 <
 
+nvim-surround>lua
+    nvim_surround = false
+<
+
 nvim-tree.lua>lua
     nvimtree = true
 <
@@ -781,6 +800,10 @@ Here is how you can use them.
 <
 
 To use another flavour just replace `mocha` with the one you want to use.
+
+render-markdown.nvim>lua
+    render_markdown = true
+<
 
 symbols-outline.nvim
   [!NOTE] This plugin has been archived by the author, consider using

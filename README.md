@@ -696,6 +696,20 @@ flash = true
 ```
 <!-- flash.nvim -->
 
+<!-- fzf-lua -->
+</tr>
+<tr>
+<td> <a href="https://github.com/ibhagwan/fzf-lua">fzf-lua</a> </td>
+<td>
+
+```lua
+fzf = true
+```
+
+</td>
+</tr>
+<!-- fzf-lua -->
+
 <!-- gitsigns.nvim -->
 </tr>
 <tr>
@@ -706,6 +720,17 @@ flash = true
 gitsigns = true
 ```
 <!-- gitsigns.nvim -->
+
+<!-- grug-far.nvim -->
+</tr>
+<tr>
+<td> <a href="https://github.com/MagicDuck/grug-far.nvim">grug-far.nvim</a> </td>
+<td>
+
+```lua
+grug_far = false
+```
+<!-- grug-far.nvim -->
 
 <!-- harpoon -->
 </tr>
@@ -799,6 +824,20 @@ let g:lightline = {'colorscheme': 'catppuccin'}
 lightspeed = false
 ```
 <!-- lightspeed.nvim -->
+
+<!-- lir.nvim -->
+</tr>
+<tr>
+<td> <a href="https://github.com/tamago324/lir.nvim">lir.nvim</a> </td>
+<td>
+
+```lua
+lir = {
+    enabled = false,
+    git_status = false
+}
+```
+<!-- lir.nvim -->
 
 <!-- lspsaga.nvim -->
 </tr>
@@ -1124,6 +1163,20 @@ semantic_tokens = true
 </tr>
 <!-- nvim-semantic-tokens -->
 
+<!-- nvim-surround -->
+</tr>
+<tr>
+<td> <a href="https://github.com/kylechui/nvim-surround">nvim-surround</a> </td>
+<td>
+
+```lua
+nvim_surround = false
+```
+
+</td>
+</tr>
+<!-- nvim-surround -->
+
 <!-- nvim-tree.lua -->
 </tr>
 <tr>
@@ -1300,6 +1353,20 @@ To use another flavour just replace `mocha` with the one you want to use.
 </td>
 </tr>
 <!-- reactive.nvim -->
+
+<!-- render-markdown.nvim -->
+</tr>
+<tr>
+<td> <a href="https://github.com/MeanderingProgrammer/render-markdown.nvim">render-markdown.nvim</a> </td>
+<td>
+
+```lua
+render_markdown = true
+```
+
+</td>
+</tr>
+<!-- render-markdown.nvim -->
 
 <!-- symbols-outline.nvim -->
 </tr>
