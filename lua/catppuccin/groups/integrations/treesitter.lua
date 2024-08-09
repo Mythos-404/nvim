@@ -167,6 +167,7 @@ If you want to stay on nvim 0.7, either disable the integration or pin catppucci
 		["@label.json"] = { fg = C.blue }, -- For labels: label: in C and :label: in Lua.
 
 		-- lua
+		["@property.lua"] = { fg = C.lavender },
 		["@constructor.lua"] = { fg = C.flamingo }, -- For constructor calls and definitions: = { } in Lua.
 		["@variable.member.lua"] = { fg = C.lavender },
 
