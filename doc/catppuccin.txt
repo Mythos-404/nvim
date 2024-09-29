@@ -841,6 +841,10 @@ Use this to set it up:
     let g:clap_theme = 'catppuccin'
 <
 
+vim-dadbod-ui>lua
+    dadbod_ui = false
+<
+
 vim-gitgutter>lua
     gitgutter = false
 <
